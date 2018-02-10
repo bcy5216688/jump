@@ -45,7 +45,7 @@
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
     "groupIndex": 0,
-    "autoReleaseAssets": false
+    "autoReleaseAssets": null
   },
   {
     "__type__": "cc.Node",
@@ -65,17 +65,17 @@
         "__id__": 6
       },
       {
-        "__id__": 9
+        "__id__": 8
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 12
+        "__id__": 11
       },
       {
-        "__id__": 13
+        "__id__": 12
       }
     ],
     "_prefab": null,
@@ -254,9 +254,6 @@
     "_components": [
       {
         "__id__": 7
-      },
-      {
-        "__id__": 8
       }
     ],
     "_prefab": null,
@@ -323,30 +320,6 @@
     "_atlas": null
   },
   {
-    "__type__": "cc.MotionStreak",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 6
-    },
-    "_enabled": true,
-    "_fadeTime": 1,
-    "_minSeg": 1,
-    "_stroke": 64,
-    "_texture": {
-      "__uuid__": "6da7c332-8fdc-4c0b-a4fc-0018220d9afa"
-    },
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_fastMode": false,
-    "_N$preview": false
-  },
-  {
     "__type__": "cc.Node",
     "_name": "cameraNode",
     "_objFlags": 0,
@@ -358,10 +331,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 10
+        "__id__": 9
       },
       {
-        "__id__": 11
+        "__id__": 10
       }
     ],
     "_prefab": null,
@@ -406,12 +379,15 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 9
+      "__id__": 8
     },
     "_enabled": true,
     "_targets": [
       {
         "__id__": 6
+      },
+      {
+        "__id__": 5
       }
     ],
     "zoomRatio": 1
@@ -421,7 +397,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 9
+      "__id__": 8
     },
     "_enabled": true,
     "target": {
@@ -456,7 +432,16 @@
       "__id__": 6
     },
     "cameraNode": {
-      "__id__": 9
-    }
+      "__id__": 8
+    },
+    "stageRootNode": {
+      "__id__": 5
+    },
+    "stagePrefab": {
+      "__uuid__": "486929b3-8bed-48a4-a805-eb9490251e21"
+    },
+    "initSpeed": 150,
+    "power": 600,
+    "radio": 0.5560472
   }
 ]

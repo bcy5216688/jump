@@ -16,8 +16,12 @@ cc.Class({
 
     // },
 
-    moveCamera: function () {
+    moveCamera: function (direction) {
         console.log("moveCamera");
-        this.node.position = cc.p(this.target.x + 200, this.target.y + 200);
+        if (direction === 1) {
+            this.node.position = cc.p(this.target.x + 200, this.target.y + 200);
+        } else if (direction === -1) {
+            this.node.position = cc.p(this.target.x - 200, this.target.y + 200);
+        }
     }
 });
