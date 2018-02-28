@@ -6,6 +6,10 @@ cc.Class({
             default: [],
             type: cc.SpriteFrame,
         },
+        icon: {
+            default: null,
+            type: cc.Node,
+        },
     },
 
     onLoad: function () {
@@ -15,4 +19,8 @@ cc.Class({
     // update: function (dt) {
 
     // },
+
+    setSpriteFrame: function () {
+        this.icon.getComponent(cc.Sprite).spriteFrame = this.spriteFrames[Math.floor(Math.random() * 3)];
+    },
 });

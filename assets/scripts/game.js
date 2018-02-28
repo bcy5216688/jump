@@ -31,9 +31,8 @@ cc.Class({
 		this.direction = 1;
 		this.curStage = undefined;
 
-		var worldPos = this.node.convertToWorldSpaceAR(this.player.position);
-		var stagePos = this.stageRootNode.convertToNodeSpaceAR(worldPos);
-		this.addStage(stagePos);
+		this.addStage();
+		this.addStage();
 
     	this.node.on(cc.Node.EventType.TOUCH_START, function(event) {
 			this.isPushScreen = true;
@@ -59,18 +58,16 @@ cc.Class({
     },
 
     jump: function () {
-		var playerPos = this.player.getPosition();
-		playerPos.x += this.addX * this.direction;
-		playerPos.y += this.addX * this.radio;
+		var targetPos = this.player.getPosition();
+		targetPos.x += this.addX * this.direction;
+		targetPos.y += this.addX * this.radio;
 
-    	var jumpToAction = cc.jumpTo(0.5,cc.p(playerPos.x,playerPos.y),100,1);
+    	var jumpToAction = cc.jumpTo(0.5,targetPos,200,1);
     	var rotateAction = cc.rotateBy(0.5,360 * this.direction);
     	var spawnAction = cc.spawn(jumpToAction,rotateAction);
     	var endFunc = cc.callFunc(function() {
-			var position = this.curStage.position;
-			position.x += 200;
-			position.y += (position.x * this.radio);
-			this.addStage(position);
+			this.direction = (Math.random() < 0.5) ? -1 : 1;
+			this.addStage();
 			this.cameraScript.moveCamera(this.direction);
     	}.bind(this));
     	var delay = cc.delayTime(1);
@@ -78,10 +75,22 @@ cc.Class({
     	this.player.runAction(seqAction);	
 	},
 	
-	addStage: function (position) {
-		var stage = cc.instantiate(this.stagePrefab);
-		this.curStage = stage;
-		stage.parent = this.stageRootNode;
-		stage.position = position;
+	addStage: function () {
+		var position = null;
+		if (this.curStage === undefined) {
+			var worldPos = this.node.convertToWorldSpaceAR(this.player.position);
+			position = this.stageRootNode.convertToNodeSpaceAR(worldPos);
+		} else {
+			var distanceX = 250 + Math.random() * 200;
+			position = this.curStage.position;
+			position.x += (distanceX * this.direction);
+			position.y += (distanceX * this.radio);
+		}
+		var stageNode = cc.instantiate(this.stagePrefab);
+		var stageScript = stageNode.getComponent("stage");
+		stageScript.setSpriteFrame();
+		this.curStage = stageNode;
+		stageNode.parent = this.stageRootNode;
+		stageNode.position = position;
 	},
 });
